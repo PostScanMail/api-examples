@@ -8,18 +8,17 @@ async function main() {
 
   const res = await fetch(url.toString(), {
     method: "GET",
-    headers: { "x-api-key": API_KEY },
+    headers: { "x-api-key": API_KEY, "Content-Type": "application/json" },
   });
 
+  const text = await res.text();
   if (!res.ok) {
-    const text = await res.text();
     console.error(`Request failed: ${res.status}\n${text}`);
     process.exit(1);
   }
 
-  const data = await res.json();
   console.log("Automation status fetched successfully.");
-  console.log("Response type:", Array.isArray(data) ? "array" : typeof data);
+  console.log(text);
 }
 
 main().catch((err) => {

@@ -1,22 +1,16 @@
-import os
-import sys
 import requests
-
-BASE_URL = os.getenv("PSM_BASE_URL", "https://api.postscanmail.com/api/account-docs/v2")
-API_KEY = os.getenv("PSM_API_KEY", "YOUR_API_KEY")
+from _common import BASE_URL, headers
 
 def main():
     url = f"{BASE_URL}/user-defined-rules/system-user-defined-rules"
     params = {"sort_order": "desc", "page": 1}
-    r = requests.get(url, headers={"x-api-key": API_KEY}, params=params, timeout=30)
+    r = requests.get(url, headers=headers(), params=params, timeout=30)
 
     if not r.ok:
-        print(f"Request failed: {r.status_code}\n{r.text}", file=sys.stderr)
-        sys.exit(1)
+        raise SystemExit(f"Request failed: {r.status_code}\n{r.text}")
 
-    data = r.json()
     print("Automation status fetched successfully.")
-    print("Response type:", "list" if isinstance(data, list) else type(data).__name__)
+    print(r.text)
 
 if __name__ == "__main__":
     main()

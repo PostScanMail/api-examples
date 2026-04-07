@@ -6,14 +6,19 @@
 
 Install:
 ```bash
-pip install requests
+pip install -r requirements.txt
 ```
 
-Run:
+## Setup
 ```bash
-export PSM_API_KEY="YOUR_API_KEY"
 export PSM_BASE_URL="https://api.postscanmail.com/api/account-docs/v2"
-python mail_items_list.py
+export PSM_API_KEY="YOUR_API_KEY"
+```
+
+For item actions:
+```bash
+export ADDRESS_ID="ADDRESS_ID"
+export MAIL_IDS="MAIL_ID_1,MAIL_ID_2"
 ```
 
 ## Support

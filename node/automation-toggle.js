@@ -1,7 +1,7 @@
 const BASE_URL = process.env.PSM_BASE_URL || "https://api.postscanmail.com/api/account-docs/v2";
 const API_KEY = process.env.PSM_API_KEY || "YOUR_API_KEY";
 
-// Example: enable auto_scan
+// Usage: node automation-toggle.js auto_scan 1
 const automationName = process.argv[2] || "auto_scan"; // auto_scan | auto_shred | auto_discard
 const isActive = Number(process.argv[3] || "1"); // 1 enable, 0 disable
 
